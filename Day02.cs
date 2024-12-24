@@ -35,9 +35,13 @@ namespace Aoc2024
 			// Check if each number is greater than the previous one
 			for (int i = 1; i < ListOfNumbers.Count; i++)
 			{
-				if ((ListOfNumbers[i] < ListOfNumbers[i - 1]) && (Math.Abs(ListOfNumbers[i] - ListOfNumbers[i - 1]) <= 3))
+				// If the current number is not greater than the previous one OR the difference is greater than 3, return 0
+				if (ListOfNumbers[i] < ListOfNumbers[i - 1] || Math.Abs(ListOfNumbers[i] - ListOfNumbers[i - 1]) > 3)
+				{
 					return 0;
+				}
 			}
+			// If the loop completes without returning 0, return 1 (list is increasing with the condition)
 			return 1;
 		}
 		static int CheckForDecreasingNumbers(List<int> ListOfNumbers)
@@ -45,7 +49,7 @@ namespace Aoc2024
 			// Check if each number is greater than the previous one
 			for (int i = 1; i < ListOfNumbers.Count; i++)
 			{
-				if ((ListOfNumbers[i] > ListOfNumbers[i - 1]) && (Math.Abs(ListOfNumbers[i] - ListOfNumbers[i - 1]) <= 3))
+				if ((ListOfNumbers[i] > ListOfNumbers[i - 1]) || (Math.Abs(ListOfNumbers[i] - ListOfNumbers[i - 1]) > 3))
 					return 0;
 			}
 			return 1;
